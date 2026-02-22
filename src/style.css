@@ -1,0 +1,39 @@
+/* Limpieza total de style.css */
+:root {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #app {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #212529;
+  overflow: hidden;
+}
+
+/* ELIMINAR EL RESALTADO AZUL EN MÓVIL */
+button, a {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+}
+
+/* Quitar la restricción de ancho que traía Vite */
+#app {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.italic { font-style: italic; font-family: 'Arial Black', sans-serif; }
+.tracking-widest { letter-spacing: 0.15em; }
+.fw-black { font-weight: 900; }
