@@ -7,25 +7,37 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
         name: 'Mirage Access System',
         short_name: 'Mirage',
         description: 'Sistema de control de accesos - Batán 3',
-        theme_color: '#0f172a', // Color pizarra oscuro (Slate-950)
+        theme_color: '#0f172a',
         background_color: '#0f172a',
-        display: 'standalone', // Esto quita la barra del navegador
+        display: 'standalone',
         icons: [
           {
-            src: 'pwa-256x256.png',
-            sizes: '256X256',
-            type: 'image/png'
+            src: 'pwa-96x96.png',
+            sizes: '96x96',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: 'pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any'
           },
           {
             src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'any'
+          },
+          {
+            src: 'pwa-512x512-maskable.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ]
       }
