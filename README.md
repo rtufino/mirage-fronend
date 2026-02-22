@@ -1,5 +1,37 @@
-# Vue 3 + Vite
+# Mirage Access System — Batán 3
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Panel de control de accesos para el edificio Batán 3. Permite abrir las puertas del edificio desde el celular o cualquier navegador en la red local.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Stack
+
+- Vue 3 + Vite
+- Bootstrap 5
+- Tailwind CSS 4
+- PWA (instalable, modo standalone)
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev      # Servidor de desarrollo (accesible en la LAN)
+npm run build    # Build de producción
+npm run preview  # Vista previa del build
+```
+
+## Funcionalidad
+
+- **Principal** — abre la puerta principal (p1)
+- **Intermedia** — abre la puerta intermedia (p2)
+- **Ambas** — abre ambas puertas simultáneamente
+
+El estado del dispositivo Wemos se verifica cada 5 segundos. Los botones se deshabilitan si el dispositivo está offline.
+
+## Backend
+
+La app se conecta a `http://192.168.100.16:5003`:
+
+| Endpoint        | Descripción                        |
+|-----------------|------------------------------------|
+| `GET /status`   | Devuelve `{ online: boolean }`     |
+| `POST /open/p1` | Abre la puerta principal           |
+| `POST /open/p2` | Abre la puerta intermedia          |
