@@ -17,6 +17,29 @@ const checkWemosStatus = async () => {
   }
 };
 
+const openBothDoors = async () => {
+  if (loading.value || !isOnline.value) return;
+
+  loading.value = true;
+  status.value = { text: 'ABRIENDO AMBAS...', color: 'text-warning' };
+
+  try {
+    const [r1, r2] = await Promise.all([
+      fetch(`${API_BASE}/open/p1`, { method: 'POST' }),
+      fetch(`${API_BASE}/open/p2`, { method: 'POST' })
+    ]);
+    if (!r1.ok || !r2.ok) throw new Error();
+    status.value = { text: '¡ACCESO CONCEDIDO!', color: 'text-success' };
+  } catch (error) {
+    status.value = { text: 'FALLO DE COMUNICACIÓN', color: 'text-danger' };
+  } finally {
+    setTimeout(() => {
+      status.value = { text: isOnline.value ? 'SISTEMA LISTO' : 'WEMOS FUERA DE LÍNEA', color: isOnline.value ? 'text-info' : 'text-muted' };
+      loading.value = false;
+    }, 3000);
+  }
+};
+
 const openDoor = async (doorId) => {
   if (loading.value || !isOnline.value) return;
 
@@ -73,6 +96,12 @@ onUnmounted(() => clearInterval(statusInterval));
                 :disabled="loading || !isOnline">
           <span class="fs-1 mb-2">🔑</span>
           <span class="fw-bold tracking-widest uppercase">Intermedia</span>
+        </button>
+        <button @click="openBothDoors()"
+                class="btn btn-outline-warning btn-lg py-5 rounded-4 shadow-lg border-2 d-flex flex-column align-items-center"
+                :disabled="loading || !isOnline">
+          <span class="fs-1 mb-2">🔓</span>
+          <span class="fw-bold tracking-widest uppercase">Ambas</span>
         </button>
       </div>
 
