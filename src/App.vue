@@ -85,20 +85,20 @@ onUnmounted(() => clearInterval(statusInterval));
 
       <div class="d-grid gap-4">
         <button @click="openDoor('p1')" 
-                class="btn btn-outline-primary btn-lg py-5 rounded-4 shadow-lg border-2 d-flex flex-column align-items-center"
+                class="btn btn-outline-primary btn-lg py-2 rounded-4 shadow-lg border-2 d-flex flex-column align-items-center"
                 :disabled="loading || !isOnline">
           <span class="fs-1 mb-2">🏠</span>
           <span class="fw-bold tracking-widest uppercase">Principal</span>
         </button>
 
         <button @click="openDoor('p2')" 
-                class="btn btn-outline-success btn-lg py-5 rounded-4 shadow-lg border-2 d-flex flex-column align-items-center"
+                class="btn btn-outline-success btn-lg py-2 rounded-4 shadow-lg border-2 d-flex flex-column align-items-center"
                 :disabled="loading || !isOnline">
           <span class="fs-1 mb-2">🔑</span>
           <span class="fw-bold tracking-widest uppercase">Intermedia</span>
         </button>
         <button @click="openBothDoors()"
-                class="btn btn-outline-warning btn-lg py-5 rounded-4 shadow-lg border-2 d-flex flex-column align-items-center"
+                class="btn btn-outline-warning btn-lg py-2 rounded-4 shadow-lg border-2 d-flex flex-column align-items-center"
                 :disabled="loading || !isOnline">
           <span class="fs-1 mb-2">🔓</span>
           <span class="fw-bold tracking-widest uppercase">Ambas</span>
