@@ -59,7 +59,7 @@ const openDoor = async (doorId) => {
     setTimeout(() => {
       status.value = { text: isOnline.value ? 'SISTEMA LISTO' : 'WEMOS FUERA DE LÍNEA', color: isOnline.value ? 'text-info' : 'text-muted' };
       loading.value = false;
-    }, 3000);
+    }, 2000);
   }
 };
 
@@ -67,7 +67,7 @@ const openDoor = async (doorId) => {
 let statusInterval;
 onMounted(() => {
   checkWemosStatus();
-  statusInterval = setInterval(checkWemosStatus, 5000); // Polling cada 5 segundos
+  statusInterval = setInterval(checkWemosStatus, 3000); // Polling cada 3 segundos
 });
 
 onUnmounted(() => clearInterval(statusInterval));
